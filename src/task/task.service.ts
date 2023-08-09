@@ -28,8 +28,8 @@ export class TaskService {
     
     // verify if task already exists
     const task = await this.findTaskByName(createTaskDto.name)
-
-    if(task) throw new ForbiddenException("Task with this name already exists.")
+   
+    if(task) throw new ForbiddenException("Task with this name already exists, choose another name.")
 
     // create task.
     return await this.createTask(createTaskDto);
