@@ -6,12 +6,8 @@ export class CreateTaskDto {
     name: string;
 
     @IsNotEmpty()
-    @IsString()
-    start_date: string;
-
-    @IsNotEmpty()
-    @IsString()
-    end_date: string;
+    @IsArray()
+    task_duration: string[];
 
     @IsNotEmpty()
     @IsArray()

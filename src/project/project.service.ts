@@ -7,11 +7,11 @@ import { PrismaService } from 'src/prisma/prisma.service';
 export class ProjectService {
   constructor(private prismaService: PrismaService) {}
   async create(createProjectDto: CreateProjectDto) {
-    return 'This action adds a new project';
+    return await this.createProject(createProjectDto)
   }
 
-  findAll() {
-    return `This action returns all project`;
+  async findAll() {
+    return await this.findAllProjects();
   }
 
   async findOne(id: string) {
@@ -30,6 +30,30 @@ export class ProjectService {
             return await this.prismaService.project.findUnique({
             where: {
                 id: id
+            },
+            select: {
+                        id: true,
+                        name: true,
+                        description: true
+            }
+        });
+  }
+      private async findAllProjects() {
+            return await this.prismaService.project.findMany({
+            where: {},
+            select: {
+                        id: true,
+                        name: true,
+                        description: true
+            }
+        });
+  }
+
+      private async createProject(createProjectDto: CreateProjectDto) {
+            return await this.prismaService.project.create({
+            data: {
+                name: createProjectDto.name,
+                description: createProjectDto.description
             },
             select: {
                         id: true,

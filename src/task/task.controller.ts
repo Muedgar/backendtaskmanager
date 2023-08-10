@@ -17,6 +17,16 @@ export class TaskController {
     return this.taskService.findAll();
   }
 
+  @Get('/search/:name')
+  searchByName(@Param('name') name: string) {
+    return this.taskService.searchByName(name)
+  }
+
+  @Get('/bydate/:startDate/:endDate')
+  searchByDate(@Param('startDate') startDate: string, @Param('endDate') endDate: string) {
+    return this.taskService.searchByDate(startDate, endDate)
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.taskService.findOne(id);
@@ -24,11 +34,11 @@ export class TaskController {
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateTaskDto: UpdateTaskDto) {
-    return this.taskService.update(+id, updateTaskDto);
+    return this.taskService.update(id, updateTaskDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.taskService.remove(+id);
+    return this.taskService.remove(id);
   }
 }

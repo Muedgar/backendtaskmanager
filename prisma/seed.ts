@@ -35,8 +35,8 @@ async function main() {
     create: {
         id: randomUUID(),
         email: userone_email,
-        first_name: '',
-        last_name: '',
+        first_name: 'John',
+        last_name: 'Doe',
         password: await hash(userone_password)
     }
 });
@@ -47,8 +47,8 @@ async function main() {
     create: {
         id: randomUUID(),
         email: usertwo_email,
-        first_name: '',
-        last_name: '',
+        first_name: 'Karim',
+        last_name: 'Benzema',
         password: await hash(usertwo_password)
     }
 });
@@ -60,8 +60,8 @@ async function main() {
     create: {
         id: randomUUID(),
         email: userthree_email,
-        first_name: '',
-        last_name: '',
+        first_name: 'Lionel',
+        last_name: 'Messi',
         password: await hash(userthree_password)
     }
 });
@@ -72,8 +72,8 @@ async function main() {
     create: {
         id: randomUUID(),
         email: userfour_email,
-        first_name: '',
-        last_name: '',
+        first_name: 'Christiano',
+        last_name: 'Ronaldo',
         password: await hash(userfour_password)
     }
 });
