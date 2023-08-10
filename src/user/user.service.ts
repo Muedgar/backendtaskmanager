@@ -18,6 +18,10 @@ export class UserService {
     return await this.findUserById(id)
   }
 
+  async findEmail(email:string) {
+    return await this.findUserByEmail(email)
+  }
+
   update(id: number, updateUserDto: UpdateUserDto) {
     return `This action updates a #${id} user`;
   }
@@ -36,6 +40,20 @@ export class UserService {
                         email: true,
                         first_name: true,
                         last_name: true
+            }
+        });
+  }
+    private async findUserByEmail(email: string) {
+            return await this.prismaService.user.findUnique({
+            where: {
+                email: email
+            },
+            select: {
+                        id: true,
+                        email: true,
+                        first_name: true,
+                        last_name: true,
+                        password: true
             }
         });
   }

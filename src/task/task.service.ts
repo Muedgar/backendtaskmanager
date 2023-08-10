@@ -44,6 +44,7 @@ export class TaskService {
 
       for(let j=0;j<task.assignees.length;j++) {
         let assignee = task.assignees[j]
+        if(!assignee) continue
         const userFound = await this.userService.findOne(assignee)
         const fullname = userFound.first_name +" " +userFound.last_name
         newAssignees.push(fullname)
@@ -51,6 +52,7 @@ export class TaskService {
 
       for(let j=0;j<task.collaborators.length;j++) {
         let collaborator = task.collaborators[j]
+        if(!collaborator) continue
         const userFound = await this.userService.findOne(collaborator)
         const fullname = userFound.first_name +" " +userFound.last_name
         newCollaborators.push(fullname)
@@ -70,6 +72,7 @@ export class TaskService {
 
       for(let j=0;j<task.assignees.length;j++) {
         let assignee = task.assignees[j]
+        if(!assignee) continue
         const userFound = await this.userService.findOne(assignee)
         const fullname = userFound.first_name +" " +userFound.last_name
         newAssignees.push(fullname)
@@ -77,6 +80,7 @@ export class TaskService {
 
       for(let j=0;j<task.collaborators.length;j++) {
         let collaborator = task.collaborators[j]
+        if(!collaborator) continue
         const userFound = await this.userService.findOne(collaborator)
         const fullname = userFound.first_name +" " +userFound.last_name
         newCollaborators.push(fullname)
@@ -105,6 +109,7 @@ export class TaskService {
 
       for(let j=0;j<task.assignees.length;j++) {
         let assignee = task.assignees[j]
+        if(!assignee) continue
         const userFound = await this.userService.findOne(assignee)
         const fullname = userFound.first_name +" " +userFound.last_name
         newAssignees.push(fullname)
@@ -112,6 +117,7 @@ export class TaskService {
 
       for(let j=0;j<task.collaborators.length;j++) {
         let collaborator = task.collaborators[j]
+        if(!collaborator) continue
         const userFound = await this.userService.findOne(collaborator)
         const fullname = userFound.first_name +" " +userFound.last_name
         newCollaborators.push(fullname)
@@ -139,7 +145,6 @@ export class TaskService {
     if(tasksInRange.length>=1) {
       return tasksInRange
     }
-    return
   }
   async findOne(id: string) {
     return await this.findTaskById(id);
